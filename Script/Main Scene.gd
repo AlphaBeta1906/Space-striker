@@ -24,7 +24,7 @@ func _physics_process(delta):
 	
 	if Global.health <= 0:
 		GameOver()
-	if Input.is_key_pressed(KEY_P):
+	if Input.is_key_pressed(KEY_P) || Input.is_action_just_pressed("ui_cancel"):
 		get_tree().paused = true
 		$"Pause dialog".show()
 
