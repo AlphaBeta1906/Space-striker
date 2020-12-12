@@ -21,7 +21,8 @@ Right : right arrow & w
 Left : left arrow & a
 Up : up arrow & w
 Down : down arrow & s
-Shot : space & left mouse"
+Shot : space & left mouse
+Pause : escape(esc) & P"
 align = 1
 valign = 1
 __meta__ = {
