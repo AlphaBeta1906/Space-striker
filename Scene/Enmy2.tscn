@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Script/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Scene/Particle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Enemy/enemyUFO.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 46.0127
+
+[node name="Enemy2" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Particles2D" parent="." instance=ExtResource( 2 )]
+one_shot = false
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -3.2964e-06, 0.264868 )
+scale = Vector2( 4.44325, 4.46974 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

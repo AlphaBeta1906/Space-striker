@@ -1,0 +1,307 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Script/Main Scene.gd" type="Script" id=2]
+[ext_resource path="res://Font/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scene/Background.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.2596, 31.6487 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -86.2048, 1258.47, -4.0817, -51.0759 ],
+"_edit_vertical_guides_": [ 2099.68, -18.3633, -59.2466, 20.1176, 405.2 ]
+}
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 21.2794
+margin_top = 568.592
+margin_right = 111.279
+margin_bottom = 599.592
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Health :
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 85.4615
+margin_top = 570.279
+margin_right = 135.461
+margin_bottom = 617.279
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "3
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 283.0
+margin_top = 1.0
+margin_right = 413.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 1 )
+text = "Score : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 346.0
+margin_top = 2.0
+margin_right = 415.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -42.2502, 338.602 )
+scale = Vector2( 1.38269, 10.2871 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 32, 11, 328, 30 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+position = Vector2( 1.6428e-06, -1.75571e-06 )
+shape = SubResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 473.666, 331.594 )
+scale = Vector2( 1.38269, 10.4812 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/StaticBody2D"]
+position = Vector2( 1.6428e-06, -1.75571e-06 )
+shape = SubResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 266.454, -100 )
+scale = Vector2( 16.062, 1.37633 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite4/StaticBody2D"]
+position = Vector2( 1.6428e-06, -1.75571e-06 )
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 214.045, 697.855 )
+scale = Vector2( 6.5578, 0.84228 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/StaticBody2D"]
+position = Vector2( 1.6428e-06, -1.75571e-06 )
+shape = SubResource( 2 )
+
+[node name="Metor timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="Meteor spawn" type="Timer" parent="Metor timer"]
+wait_time = 3.0
+
+[node name="Game over" type="PopupDialog" parent="."]
+visible = true
+margin_left = 84.0968
+margin_top = 241.414
+margin_right = 329.097
+margin_bottom = 395.414
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Game over"]
+anchor_right = 0.152
+margin_left = 28.7515
+margin_top = 7.33085
+margin_right = 171.751
+margin_bottom = 21.3309
+custom_fonts/font = SubResource( 3 )
+text = "Game over"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Game over"]
+anchor_right = 0.152
+margin_left = 26.6082
+margin_top = 31.8306
+margin_right = 169.608
+margin_bottom = 45.8306
+custom_fonts/font = SubResource( 3 )
+text = "Your score is :"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Game over"]
+margin_left = 158.0
+margin_top = 61.0
+margin_right = 297.0
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 3 )
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Game over"]
+margin_left = 176.272
+margin_top = 32.9512
+margin_right = 315.272
+margin_bottom = 125.951
+custom_fonts/font = SubResource( 3 )
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Game over"]
+margin_left = 39.1621
+margin_top = 58.7151
+margin_right = 182.161
+margin_bottom = 72.7151
+custom_fonts/font = SubResource( 3 )
+text = "high score:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="Game over"]
+anchor_right = 0.152
+margin_left = 12.0998
+margin_top = 116.374
+margin_right = 69.0998
+margin_bottom = 136.374
+custom_fonts/font = SubResource( 3 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="Game over"]
+anchor_right = 0.152
+margin_left = 128.265
+margin_top = 116.175
+margin_right = 185.265
+margin_bottom = 136.175
+custom_fonts/font = SubResource( 3 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Button" parent="."]
+margin_left = 9.53516
+margin_top = 6.35678
+margin_right = 59.5352
+margin_bottom = 26.3568
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause dialog" type="PopupDialog" parent="."]
+pause_mode = 2
+margin_left = 137.0
+margin_top = 237.0
+margin_right = 295.0
+margin_bottom = 368.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Pause dialog"]
+margin_left = 42.0
+margin_top = 24.0
+margin_right = 119.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 4 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="Pause dialog"]
+margin_left = 42.8108
+margin_top = 54.2159
+margin_right = 116.811
+margin_bottom = 79.2159
+custom_fonts/font = SubResource( 4 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="Pause dialog"]
+margin_left = 43.8108
+margin_top = 84.2159
+margin_right = 115.811
+margin_bottom = 109.216
+custom_fonts/font = SubResource( 4 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 222.456, 509.856 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Metor timer" to="." method="_on_Metor_timer_timeout"]
+[connection signal="timeout" from="Metor timer/Meteor spawn" to="." method="_on_Meteor_spawn_timeout"]
+[connection signal="pressed" from="Game over/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Game over/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
+[connection signal="pressed" from="Pause dialog/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Pause dialog/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Pause dialog/Quit" to="." method="_on_Quit_pressed"]

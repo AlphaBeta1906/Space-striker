@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Script/Meteor.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Meteor/meteorSmall.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Meteor/meteorBig.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.437037, 0.555556, 0.622222, 0.688889, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.992188, 0.992188, 1, 1, 1, 1, 1, 0.789474, 0.992188, 0.98056, 0.98056, 0.671053, 1, 1, 1, 0.552632, 0.996078, 0.996078, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.28
+angular_velocity = -463.45
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 0.13
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 65.6056, 48.163 )
+
+[node name="Meteor" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.550295, 1.22783 )
+texture = ExtResource( 3 )
+
+[node name="Metor shard" type="Particles2D" parent="."]
+emitting = false
+amount = 15
+one_shot = true
+preprocess = 0.25
+explosiveness = 1.0
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )

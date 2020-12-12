@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Script/Player.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player/player.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/playerRight.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/playerLeft.png" type="Texture" id=4]
+[ext_resource path="res://Scene/Particle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sound/Explosion.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.5165, 38.0263 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 44.397, 16.8131 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "New Anim"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animation:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.09, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.117647, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 200.653, 467.824 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 0.957983, 0.952381, 1 )
+light_mask = -2147483619
+frames = SubResource( 1 )
+animation = "Right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0.235169, 9.54593 )
+shape = SubResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -0.122441, -45.1696 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( -43.0082, -6.90883 )
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 40.6669, -12.856 )
+
+[node name="Particles2D" parent="." instance=ExtResource( 5 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 4 )
+
+[node name="Explosion" parent="." instance=ExtResource( 6 )]
