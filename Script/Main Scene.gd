@@ -13,7 +13,7 @@ func _ready():
 		Global.create_save()
 	if Global.save.file_exists(Global.path):
 		Global.Load()
-		print(str(Global.highscore))
+		print("Highscore : "+str(Global.highscore))
 
 
 
@@ -71,7 +71,6 @@ func _on_Timer_timeout():
 
 
 func _on_Metor_timer_timeout():
-	print("meteor mode is start")
 	$"Metor timer/Meteor spawn".start()
 	$"Metor timer/Meteor spawn".autostart = true
 
